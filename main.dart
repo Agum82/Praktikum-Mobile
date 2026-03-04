@@ -1,65 +1,34 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(HomePage());
+  runApp(const MyApp());
 }
 
-class HomePage extends StatelessWidget{
-  build(context){
+class MyApp extends StatelessWidget {
+  const MyApp({super.key}); // Constructor disederhanakan, hapus throw error
+
+  @override // Tambahkan anotasi ini
+  Widget build(BuildContext context) {
+    String title = 'Aplikasi Pertamaku';
+    String name = 'Agum Aidil Saepul Rohman';
+    String message = 'Halo nama saya $name, Selamat Datang di $title';
+    
     return MaterialApp(
+      title: title,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red[800],
-          leading: Icon(Icons.home),
-          title: Text('Aplikasi Pertamaku',),
+          backgroundColor: Colors.indigo,
+          title: Text(title),
         ),
-        body: Container(
-          margin: EdgeInsets.all(20),
-          child: Column(
-            children: [
-              Row(children: [Icon(Icons.archive), Text("Artikel Baru")]),
-              Card(
-                child: Column(
-                  children: [
-                    Image.network('https://www.kbb.com/car-advice/sports-car-buying-guide/'),
-                    Text("Judul Artikel Terbaru"),
-                  ],
-                ),
-              ),
-              SizedBox(height: 20,),
-              Row(
-                children: [
-                  Text('Komentar',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  ),
-              ),
-                ListView(
-                  shrinkWrap: true,
-                  children: [
-                    Card(
-                      child: Padding(
-                        padding: EdgeInsetsGeometry.all(3),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Agum ASR'),
-                            Text('Kelas A'),
-
-                          ],
-                
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                     
-            ],
-          ),
-
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(message),
+            Text(message),
+            Text(message),
+            Text(message),
+          ],
         ),
       ),
     );
