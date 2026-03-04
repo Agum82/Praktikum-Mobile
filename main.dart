@@ -1,34 +1,65 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(HomePage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    String title = 'Aplikasi  Pertamaku';
-    String name = 'Agum Aidil Saepul Rohman';
-    String message = 'Halo nama saya $name, Selamat Datang di $title';
+class HomePage extends StatelessWidget{
+  build(context){
     return MaterialApp(
-      title: title,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.indigo,
-          title: Text(title),
+          backgroundColor: Colors.red[800],
+          leading: Icon(Icons.home),
+          title: Text('Aplikasi Pertamaku',),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(message),
-            Text(message),
-            Text(message),
-            Text(message),
-          ],
+        body: Container(
+          margin: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Row(children: [Icon(Icons.archive), Text("Artikel Baru")]),
+              Card(
+                child: Column(
+                  children: [
+                    Image.network('https://www.kbb.com/car-advice/sports-car-buying-guide/'),
+                    Text("Judul Artikel Terbaru"),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20,),
+              Row(
+                children: [
+                  Text('Komentar',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  ),
+              ),
+                ListView(
+                  shrinkWrap: true,
+                  children: [
+                    Card(
+                      child: Padding(
+                        padding: EdgeInsetsGeometry.all(3),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Agum ASR'),
+                            Text('Kelas A'),
+
+                          ],
+                
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                     
+            ],
+          ),
+
         ),
       ),
     );
