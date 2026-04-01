@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   final String name;
   final int year;
   MyApp({required this.name, required this.year});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +16,6 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.purple,
         title: Text('Pertemuan 4'),
       ),
-
       body: Container(margin: EdgeInsets.all(10), child: NumberScreen()),
     );
   }
@@ -27,60 +27,78 @@ class NumberScreen extends StatefulWidget {
 }
 
 class _NumberScreenState extends State<NumberScreen> {
-  String name = 'gelas';
+  String name = 'Gelas';
   String photo = 'https://picsum.photos/200/300';
   int qty = 0;
+  int price = 15000; // Harga satuan
 
   @override
   Widget build(BuildContext context) {
+    // Menghitung total harga
+    int totalPrice = qty * price;
+
     return Scaffold(
       body: Column(
         children: [
           Card(
+            elevation: 4,
             child: Padding(
               padding: EdgeInsets.all(10),
               child: Row(
                 children: [
+                  // Bagian Informasi Produk
                   Expanded(
-                    flex: 20,
+                    flex: 3,
                     child: Column(
-                      crossAxisAlignment: .start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           name,
-                          style: TextStyle(fontWeight: .bold, fontSize: 16),
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                         ),
+                        SizedBox(height: 8),
                         Image.network(
                           photo,
                           width: 100,
                           height: 100,
                           fit: BoxFit.cover,
                         ),
+                        SizedBox(height: 8),
                         Text(
-                          'Rp.15.000',
-                          style: TextStyle(fontWeight: .bold, fontSize: 16),
+                          'Total: Rp ${totalPrice.toString()}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold, 
+                            fontSize: 16, 
+                            color: Colors.purple
+                          ),
                         ),
                       ],
                     ),
                   ),
+                  
+                  // Bagian Kontrol Jumlah (Counter)
                   Expanded(
-                    flex: 6,
+                    flex: 2,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(qty.toString()),
                         IconButton(
-                          icon: Icon(Icons.add),
+                          icon: Icon(Icons.remove_circle_outline, color: Colors.red),
                           onPressed: () {
                             setState(() {
-                              qty++;
+                              if (qty > 0) qty--; // Mencegah angka minus
                             });
                           },
                         ),
+                        Text(
+                          qty.toString(),
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
                         IconButton(
-                          icon: Icon(Icons.delete),
+                          icon: Icon(Icons.add_circle_outline, color: Colors.green),
                           onPressed: () {
                             setState(() {
-                              qty--;
+                              qty++;
                             });
                           },
                         ),
