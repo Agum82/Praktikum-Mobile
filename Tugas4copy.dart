@@ -69,19 +69,18 @@ class _NumberScreenState extends State<NumberScreen> {
                       children: [
                         Text(qty.toString()),
                         IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () {
-                            setState(() {
-                              qty--;
-                            });
-                          },
-                        ),
-                        Text(qty.toString()),
-                        IconButton(
                           icon: Icon(Icons.add),
                           onPressed: () {
                             setState(() {
                               qty++;
+                            });
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            setState(() {
+                              qty--;
                             });
                           },
                         ),
