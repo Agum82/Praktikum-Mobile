@@ -7,6 +7,7 @@ class SecondPage extends StatelessWidget {
   final String description;
 
   const SecondPage({
+    super.key,
     required this.name,
     required this.price,
     required this.imageUrl,
@@ -17,21 +18,41 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Halaman Kedua"),
-        backgroundColor: Colors.amber,
+        title: const Text("Halaman Kedua", style: TextStyle(color: Colors.black87)),
+        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Colors.black87),
       ),
       body: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.network(
             imageUrl,
             width: double.infinity,
-            height: 500,
+            height: 280,
             fit: BoxFit.cover,
           ),
-          Text(name, style: TextStyle(fontSize: 24, fontWeight: .bold)),
-          Text(price as String, style: TextStyle(fontSize: 20, color: Colors.brown)),
-          Text(description, style: TextStyle(fontSize: 16)),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name, 
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Rp $price', 
+                  style: const TextStyle(fontSize: 20, color: Colors.green, fontWeight: FontWeight.w600)
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  description, 
+                  style: const TextStyle(fontSize: 16)
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
