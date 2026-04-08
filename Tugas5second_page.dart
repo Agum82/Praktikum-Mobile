@@ -30,7 +30,7 @@ class SecondPage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
           Text(name, style: TextStyle(fontSize: 24, fontWeight: .bold)),
-          Text(price, style: TextStyle(fontSize: 20, color: Colors.brown)),
+          Text(price as String, style: TextStyle(fontSize: 20, color: Colors.brown)),
           Text(description, style: TextStyle(fontSize: 16)),
         ],
       ),
