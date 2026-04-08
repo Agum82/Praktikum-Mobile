@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   final String description;
 
   const HomePage({
+    super.key,
     required this.name,
     required this.price,
     required this.imageUrl,
@@ -20,20 +21,26 @@ class HomePage extends StatelessWidget {
         title: const Text('Halaman Utama'),
         backgroundColor: Colors.blue,
       ),
-      body: Column(
-        crossAxisAlignment: .start,
-        children: [
-          Image.network(imageUrl, width: 200, height: 300, fit: BoxFit.cover),
-          Text('Harga: $price', style: TextStyle(fontSize: 16)),
-          Text(name, style: TextStyle(fontSize: 18, fontWeight: .bold)),
-          SizedBox(height: 20),
-          ElevatedButton(
-            child: Text('Lihat Detail', style: TextStyle(fontSize: 14)),
-            onPressed: () {
-              Navigator.pushNamed(context, '/scond');
-            },
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.network(imageUrl, width: 200, height: 200, fit: BoxFit.cover),
+            const SizedBox(height: 16),
+            Text('Harga: Rp $price', style: const TextStyle(fontSize: 16)),
+            const SizedBox(height: 8),
+            Text(name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // KODE INI HARUS SAMA PERSIS DENGAN NAMA RUTE DI MAIN.DART
+                Navigator.pushNamed(context, '/second');
+              },
+              child: const Text('Lihat Detail', style: TextStyle(fontSize: 14)),
+            ),
+          ],
+        ),
       ),
     );
   }
