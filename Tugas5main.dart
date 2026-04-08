@@ -1,29 +1,38 @@
 import 'package:flutter/material.dart';
-import 'second_page.dart';
 import 'home_page.dart';
-
-
+import 'second_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final String name = "Produk A";
-  final int price =1000000;
-  final String imageUrl = "https://picsum.photos/200/300";
-  final String description = "Deskripsi Produk A";
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    const String name = "Produk A";
+    const int price = 100000;
+    const String imageUrl = "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80";
+    const String description = "Deskripsi Produk A";
+
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => 
-            HomePage(name: name,
-             imageUrl: imageUrl,
-              price: price),
-        '/second': (context) => SecondPage(),
+        '/': (context) => const HomePage(
+              name: name,
+              imageUrl: imageUrl,
+              price: price,
+              description: description,
+            ),
+        // RUTE INI YANG MENENTUKAN HALAMAN KEDUA BISA DIBUKA ATAU TIDAK
+        '/second': (context) => const SecondPage(
+              name: name,
+              price: price,
+              imageUrl: imageUrl,
+              description: description,
+            ),
       },
     );
   }
